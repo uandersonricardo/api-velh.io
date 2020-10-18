@@ -38,18 +38,41 @@ Corpo:
 Retorno:
 ~~~javascript
 {
-  id: 3
+  id: 3,
+  mark: "O"
 }
 ~~~
 
-### Entrar/ver estado do tabuleiro:
+### Entrar em um tabuleiro:
+
+Rota: ```POST board/{id}```
+
+Corpo:
+~~~javascript
+{
+  user: "sonson"
+}
+~~~
+
+Retorno:
+~~~javascript
+{
+  board: [["_", "_", "_"], ["X", "_", "_"], ["O", "X", "_"]],
+  winner: null,
+  mark: "X",
+  opponent: "Carlos",
+  turn: "sonson"
+}
+~~~
+
+### Ler estado do tabuleiro:
 
 Rota: ```GET board/{id}```
 
 Retorno:
 ~~~javascript
 {
-  board: [[0, 0, 0], [1, 0, 0], [2, 1, 0]],
+  board: [["_", "_", "_"], ["X", "_", "_"], ["O", "X", "_"]],
   winner: null,
   opponent: "Carlos",
   turn: "sonson"
@@ -65,6 +88,7 @@ Corpo:
 {
   x: 1,
   y: 0,
+  mark: "X",
   user: "sonson"
 }
 ~~~
@@ -72,14 +96,14 @@ Corpo:
 Retorno:
 ~~~javascript
 {
-  board: [[0, 1, 0], [1, 0, 0], [2, 1, 0]],
+  board: [["_", "X", "_"], ["X", "_", "_"], ["O", "X", "_"]],
   winner: null,
   opponent: "Carlos",
   turn: "Carlos"
 }
 ~~~
 
-### Finalizar/apagar tabuleiro:
+### Finalizar (apagar) um tabuleiro:
 
 Rota: ```DELETE board/{id}```
 
